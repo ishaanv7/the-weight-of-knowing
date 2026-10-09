@@ -55,7 +55,7 @@ async function signUp() {
       email,
       password,
       options: {
-        emailRedirectTo: window.location.origin
+        emailRedirectTo: https://ishaanv7.github.io/the-weight-of-knowing/
       }
     });
 
