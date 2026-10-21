@@ -1,37 +1,11 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Weight of Knowing</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <header>
-        <p>THE WEIGHT OF KNOWING</p>
-    </header>
-
-    <main>
-        <h1>Some truths change us.</h1>
-
-        <p>
-            A personal collection of thoughts on life,
-            human nature, and the things we learn along the way.
-        </p>
-
-        <h2>Begin with a question.</h2>
-        <p>What does it mean to truly understand someone?</p>
-    </main>
-
-    
-<s
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#101010">
   <title>The Weight of Knowing</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <header class="topbar">
@@ -43,35 +17,20 @@
     <section class="hero">
       <p class="eyebrow">A PERSONAL PHILOSOPHY JOURNAL</p>
       <h1>The Weight<br>of <em>Knowing.</em></h1>
-      <p class="intro">
-        Thoughts on existence, truth, pain, and the human mind.
-        A place to write what the world doesn't need to hear.
-      </p>
+      <p class="intro">Thoughts on existence, truth, pain, and the human mind. A place to write what the world doesn't need to hear.</p>
     </section>
 
     <section id="auth-panel" class="panel">
       <h2>Your private space.</h2>
       <p class="muted">Sign in or create your account to continue.</p>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
       <form id="auth-form">
         <label for="email">Email address</label>
-        <input id="email" type="email" autocomplete="email"
-          placeholder="you@example.com" required>
-
+        <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
         <label for="password">Password</label>
-        <input id="password" type="password"
-          autocomplete="current-password" minlength="8"
-          placeholder="At least 8 characters" required>
-
+        <input id="password" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required>
         <div class="actions">
           <button type="submit" id="login-btn">Sign in</button>
-          <button type="button" id="signup-btn" class="secondary">
-            Create account
-          </button>
+          <button type="button" id="signup-btn" class="secondary">Create account</button>
         </div>
       </form>
     </section>
@@ -82,27 +41,61 @@
           <p class="eyebrow">YOUR INNER WORLD</p>
           <h2>My writings.</h2>
         </div>
-        <button id="logout-btn" class="secondary small">Sign out</button>
+        <button id="logout-btn" class="secondary small" type="button">Sign out</button>
       </div>
 
-      <form id="entry-form">
-        <label for="entry-title">Title</label>
-        <input id="entry-title" maxlength="200"
-          placeholder="What is on your mind?" required>
-
-        <label for="entry-body">Your thoughts</label>
-        <textarea id="entry-body" maxlength="50000" rows="8"
-          placeholder="Begin anywhere. You don't have to make sense yet."
-          required></textarea>
-
-        <button type="submit">Save entry ↗</button>
-      </form>
-
-      <div class="entries-heading">
-        <h3>Previous thoughts</h3>
-        <span class="muted">Only your entries</span>
+      <div class="mode-switch" role="group" aria-label="Writing mode">
+        <button type="button" id="notes-mode-btn" class="mode-btn active" aria-pressed="true">Notes</button>
+        <button type="button" id="books-mode-btn" class="mode-btn secondary" aria-pressed="false">Books &amp; chapters</button>
       </div>
-      <div id="entries-list"></div>
+
+      <section id="notes-mode">
+        <form id="entry-form">
+          <label for="entry-title">Title</label>
+          <input id="entry-title" maxlength="200" placeholder="What is on your mind?" required>
+          <label for="entry-body">Your thoughts</label>
+          <textarea id="entry-body" maxlength="50000" rows="8" placeholder="Begin anywhere. You don't have to make sense yet." required></textarea>
+          <button type="submit">Save entry ↗</button>
+        </form>
+        <div class="entries-heading">
+          <h3>Previous thoughts</h3>
+          <span class="muted">Only your entries</span>
+        </div>
+        <div id="entries-list"></div>
+      </section>
+
+      <section id="books-mode" hidden>
+        <p class="muted">Create a book for longer work, then keep its writing organized into chapters.</p>
+        <form id="book-form">
+          <label for="book-title">Book title</label>
+          <input id="book-title" maxlength="200" placeholder="e.g. The Weight of Knowing" required>
+          <label for="book-description">Description (optional)</label>
+          <textarea id="book-description" maxlength="2000" rows="3" placeholder="What is this book about?"></textarea>
+          <button type="submit" id="create-book-btn">Create book ↗</button>
+        </form>
+        <div class="entries-heading"><h3>Your books</h3></div>
+        <div id="books-list"></div>
+
+        <section id="chapters-panel" class="chapter-panel" hidden>
+          <div class="journal-heading">
+            <div>
+              <p class="eyebrow">SELECTED BOOK</p>
+              <h3 id="selected-book-title">Book title</h3>
+              <p id="selected-book-description" class="muted"></p>
+            </div>
+            <button type="button" id="close-book-btn" class="secondary small">Back to books</button>
+          </div>
+          <form id="chapter-form">
+            <label for="chapter-title">Chapter title</label>
+            <input id="chapter-title" maxlength="200" placeholder="Chapter 1 — The Beginning" required>
+            <label for="chapter-body">Chapter writing</label>
+            <textarea id="chapter-body" maxlength="100000" rows="12" placeholder="Start writing your chapter here..." required></textarea>
+            <button type="submit" id="save-chapter-btn">Save chapter ↗</button>
+          </form>
+          <div class="entries-heading"><h3>Chapters</h3></div>
+          <div id="chapters-list"></div>
+        </section>
+      </section>
     </section>
 
     <p id="status" class="status" role="status" aria-live="polite"></p>
@@ -113,7 +106,7 @@
     <span>A PRIVATE ARCHIVE · EST. 2026</span>
   </footer>
 
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-<script src="./script.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
